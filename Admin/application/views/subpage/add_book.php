@@ -63,23 +63,23 @@
                 </tr>
                 <?php foreach($results as $row):?>
                 <tr>
-                    <td><?php echo $row->ID; ?></td>
-                    <td><?php echo $row->accession_no; ?></td>
-                    <td><?php echo $row->date_received; ?></td>
-                    <td><?php echo $row->classification; ?></td>
-                    <td><?php echo $row->author; ?></td>
-                    <td><?php echo $row->title; ?></td>
-                    <td><?php echo $row->edition; ?></td>
-                    <td><?php echo $row->volume; ?></td>
-                    <td><?php echo $row->pages; ?></td>
-                    <td><?php echo $row->sourceoffund; ?></td>
-                    <td><?php echo $row->costprice; ?></td>
-                    <td><?php echo $row->published; ?></td>
-                    <td><?php echo $row->copies; ?></td>
-                    <td><?php echo $row->available; ?></td>
-                    <td><?php echo $row->year; ?></td>
-                    <td><?php echo $row->remarks; ?></td>
-                    <td><?php echo $row->thumbnail; ?></td>
+                    <td><?php echo isset($row->ID) ? $row->ID : ''; ?></td>
+                    <td><?php echo isset($row->accession_no) ? $row->accession_no : ''; ?></td>
+                    <td><?php echo isset($row->date_received) ? $row->date_received : ''; ?></td>
+                    <td><?php echo isset($row->classification) ? $row->classification : ''; ?></td>
+                    <td><?php echo isset($row->author) ? $row->author : ''; ?></td>
+                    <td><?php echo isset($row->title) ? $row->title : ''; ?></td>
+                    <td><?php echo isset($row->edition) ? $row->edition : ''; ?></td>
+                    <td><?php echo isset($row->volume) ? $row->volume : ''; ?></td>
+                    <td><?php echo isset($row->pages) ? $row->pages : ''; ?></td>
+                    <td><?php echo isset($row->sourceoffund) ? $row->sourceoffund : ''; ?></td>
+                    <td><?php echo isset($row->costprice) ? $row->costprice : ''; ?></td>
+                    <td><?php echo isset($row->published) ? $row->published : ''; ?></td>
+                    <td><?php echo isset($row->copies) ? $row->copies : ''; ?></td>
+                    <td><?php echo isset($row->available) ? $row->available : ''; ?></td>
+                    <td><?php echo isset($row->year) ? $row->year : ''; ?></td>
+                    <td><?php echo isset($row->remarks) ? $row->remarks : ''; ?></td>
+                    <td><?php echo isset($row->thumbnail) ? $row->thumbnail : ''; ?></td>
                 </tr>
                 <?php endforeach; ?>
             </table>

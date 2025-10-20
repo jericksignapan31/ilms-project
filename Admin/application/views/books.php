@@ -68,27 +68,28 @@
                 </tr>
                 <?php foreach($results as $row):?>
                 <tr>
-                    <td><?php echo $row->ID; ?></td>
-                    <?php if($row->thumbnail != ""):?>
-                        <td><img src="<?php echo base_url('assets/image/uploads/thumbnail/'); ?><?php echo $row->thumbnail; ?>" alt="" srcset=""></td>
+                    <td><?php echo isset($row->ID) ? $row->ID : ''; ?></td>
+                    <?php $thumb = isset($row->thumbnail) ? $row->thumbnail : ''; ?>
+                    <?php if(!empty($thumb)):?>
+                        <td><img src="<?php echo base_url('assets/image/uploads/thumbnail/'); ?><?php echo $thumb; ?>" alt="" srcset=""></td>
                     <?php else:?>
                         <td><p>image not available</p></td>
                     <?php endif; ?>
-                    <td><?php echo $row->accession_no; ?></td>
-                    <td><?php echo $row->date_received; ?></td>
-                    <td><?php echo $row->classification; ?></td>
-                    <td><?php echo $row->author; ?></td>
-                    <td><?php echo $row->title; ?></td>
-                    <td><?php echo $row->edition; ?></td>
-                    <td><?php echo $row->volume; ?></td>
-                    <td><?php echo $row->pages; ?></td>
-                    <td><?php echo $row->sourceoffund; ?></td>
-                    <td><?php echo $row->costprice; ?></td>
-                    <td><?php echo $row->published; ?></td>
-                    <td><?php echo $row->copies; ?></td>
-                    <td><?php echo $row->available; ?></td>
-                    <td><?php echo $row->year; ?></td>
-                    <td><?php echo $row->remarks; ?></td>
+                    <td><?php echo isset($row->accession_no) ? $row->accession_no : ''; ?></td>
+                    <td><?php echo isset($row->date_received) ? $row->date_received : ''; ?></td>
+                    <td><?php echo isset($row->classification) ? $row->classification : ''; ?></td>
+                    <td><?php echo isset($row->author) ? $row->author : ''; ?></td>
+                    <td><?php echo isset($row->title) ? $row->title : ''; ?></td>
+                    <td><?php echo isset($row->edition) ? $row->edition : ''; ?></td>
+                    <td><?php echo isset($row->volume) ? $row->volume : ''; ?></td>
+                    <td><?php echo isset($row->pages) ? $row->pages : ''; ?></td>
+                    <td><?php echo isset($row->sourceoffund) ? $row->sourceoffund : ''; ?></td>
+                    <td><?php echo isset($row->costprice) ? $row->costprice : ''; ?></td>
+                    <td><?php echo isset($row->published) ? $row->published : ''; ?></td>
+                    <td><?php echo isset($row->copies) ? $row->copies : ''; ?></td>
+                    <td><?php echo isset($row->available) ? $row->available : ''; ?></td>
+                    <td><?php echo isset($row->year) ? $row->year : ''; ?></td>
+                    <td><?php echo isset($row->remarks) ? $row->remarks : ''; ?></td>
                 </tr>
                 <?php endforeach; ?>
             </table>

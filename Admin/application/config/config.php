@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/USTP/Library_Management_System/Admin';
+$config['base_url'] = 'http://localhost/library_system/USTP/Library_Management_System/Admin';
 
 /*
 |--------------------------------------------------------------------------
