@@ -6,13 +6,13 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/login.css">
     <script src="<?php echo base_url(); ?>assets/javascript/RealtimeUpdate.js"></script>
     <script src="https://kit.fontawesome.com/75d764fe7a.js" crossorigin="anonymous"></script>
-    <title>iRead USTP</title>
+    <title>iRead IIS</title>
 </head>
 <body>
     <div class="body">
         <img src="<?php echo base_url(); ?>assets/image/USTP-Logo2.png" alt="">
         <h2>Library Management System</h2>
-        <h4>(iRead USTP Villanueva)</h4>
+        <h4>(iRead Talakag Bukidnon)</h4>
 
         <form action="<?php echo base_url("Post/login")?>" method="post" enctype="multipart/form-data">
             <h1>LOGIN</h1>

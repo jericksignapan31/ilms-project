@@ -8,7 +8,7 @@
     <script src="<?php echo base_url(); ?>assets/javascript/hide-show-pass.js"></script>
     <script src="<?php echo base_url(); ?>assets/javascript/check_inputs.js"></script>
     <script src="https://kit.fontawesome.com/75d764fe7a.js" crossorigin="anonymous"></script>
-    <title>iRead USTP | ADMIN</title>
+    <title>iRead IIS | ADMIN</title>
 </head>
 <body>
     <div class="side">

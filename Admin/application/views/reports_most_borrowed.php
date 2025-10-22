@@ -5,7 +5,7 @@
     <link rel="icon" href="<?php echo base_url(); ?>assets/image/logo.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/report.css">
     <script src="https://kit.fontawesome.com/75d764fe7a.js" crossorigin="anonymous"></script>
-    <title>iRead USTP | ADMIN</title>
+    <title>iRead IIS | ADMIN</title>
 </head>
 <body style="background-image: url(<?php echo base_url('assets/image/bg-image-library.png') ?>);">
     <div class="container"></div>

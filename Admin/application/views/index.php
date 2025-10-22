@@ -5,7 +5,7 @@
     <link rel="icon" href="<?php echo base_url(); ?>assets/image/logo.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/index.css">
     <script src="https://kit.fontawesome.com/75d764fe7a.js" crossorigin="anonymous"></script>
-    <title>iRead USTP|ADMIN</title>
+    <title>iRead IIS|ADMIN</title>
     
 </head>
 <body style="background-image: url(<?php echo base_url(); ?>assets/image/background_Admin.jpg);">
@@ -17,8 +17,8 @@
         <div class="body-content">
             <div class="content">
                 <img src="<?php echo base_url(); ?>assets/image/Logo.png" alt="">
-                <h2>Library Management System</h2>
-                <h4>(iRead USTP Villanueva)</h4>
+                <h2>IIS Library Management System</h2>
+                <h4>(iRead Talakag Bukidnon)</h4>
 
                 <form action="<?=base_url('Auth/login')?>" method="post" enctype="multipart/form-data">
                     <h1>LOGIN</h1>

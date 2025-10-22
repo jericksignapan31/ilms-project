@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/home.css">
     <script src="<?php echo base_url(); ?>assets/javascript/hideAndShow.js"></script>
     <script src="https://kit.fontawesome.com/75d764fe7a.js" crossorigin="anonymous"></script>
-    <title>iRead USTP</title>
+    <title>iRead IIS</title>
 </head>
 <body style="background-image: url(<?php echo base_url('assets/image/bg-image-library.png') ?>);" onload="generateQR(), notify()">
 

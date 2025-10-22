@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/members.css">
     <script src="<?php echo base_url(); ?>assets/javascript/hide_show_button.js"></script>
     <script src="https://kit.fontawesome.com/75d764fe7a.js" crossorigin="anonymous"></script>
-    <title>iRead USTP | ADMIN</title>
+    <title>iRead IIS | ADMIN</title>
 </head>
 <body>
     <div class="side">
