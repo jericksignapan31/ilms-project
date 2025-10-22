@@ -45,7 +45,6 @@
     </div>
     <div class="body">
         <div class="side">
-            <h4><i class="fa-solid fa-table-columns"></i> Dashboard</h4>
             <?php foreach($data as $row):?>
             <div class="user-info">
                 <div class="qrBox">
@@ -56,7 +55,7 @@
                     let mobileqrTxt = document.getElementById("studentID");
 
                     function generateQR(){
-                        mobileqrImg.src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=" + "<?php echo $row->Student_ID; ?>";
+                        mobileqrImg.src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=" + "<?php echo $row->Student_ID; ?>";
 
                         const sidebar = document.querySelector('.qrBox')
                         sidebar.style.display = 'block'
@@ -67,10 +66,8 @@
                 <p>Full name</p>
                 <h6 class="sID"><?php echo $row->Course; ?> <?php echo $row->Year; ?> <?php echo $row->Section; ?></h6>
                 <p>Course, Year, and Section</p>
-                <h6 class="sID"><?php echo $row->Email; ?></h6>
-                <p>Email</p>
-                <h6 class="sID"><?php echo $row->Address; ?></h6>
-                <p>Address</p>
+               
+                
             </div>
             <?php endforeach; ?>
             <nav>
@@ -102,7 +99,7 @@
                     let qrTxt = document.getElementById("studentID");
 
                     function mobilegenerateQR(){
-                        qrImg.src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=" + "<?php echo $row->Student_ID; ?>";
+                        qrImg.src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=" + "<?php echo $row->Student_ID; ?>";
 
                         const sidebar = document.querySelector('.qrBox')
                         sidebar.style.display = 'block'

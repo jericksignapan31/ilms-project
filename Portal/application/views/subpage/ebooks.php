@@ -24,7 +24,27 @@
     </div>
     <div class="body">
         <div class="side">
-            <h4><i class="fa-solid fa-tablet-screen-button"></i> E-books</h4>
+            <h4><i class="fa-solid fa-table-columns"></i> Dashboard</h4>
+            <?php foreach($data as $row):?>
+            <div class="user-info">
+                <div class="qrBox">
+                    <img id="mobileqrImage">
+                </div>
+                <script>
+                    let mobileqrImg = document.getElementById("mobileqrImage");
+
+                    function generateQR(){
+                        mobileqrImg.src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=" + "<?php echo $row->Student_ID; ?>";
+                    }
+                    generateQR();
+                </script>
+
+                <h6><?php echo $row->Fname; ?> <?php echo $row->MI; ?> <?php echo $row->Lname; ?></h6>
+                <p>Full name</p>
+                <h6 class="sID"><?php echo $row->Course; ?> <?php echo $row->Year; ?> <?php echo $row->Section; ?></h6>
+                <p>Course, Year, and Section</p>
+            </div>
+            <?php endforeach; ?>
             <nav>
                 <ul>
                     <li><a href="<?php echo base_url("Auth/home")?>"><i class="fa-solid fa-house"></i> Home</a></li>
@@ -35,15 +55,35 @@
                             <li><a href="<?php echo base_url("Auth/ebooks")?>" class="active"><i class="fa-solid fa-tablet-screen-button"></i> E-books</a></li>
                         </ul>
                     </li>
-                    <li><a href="<?php foreach($data as $row):?><?php echo base_url("Auth/borrowing/$row->Student_ID")?><?php endforeach; ?>"><i class="fa-solid fa-book-open-reader"></i> borrowing history</a></li>
+                    <li><a href="<?php foreach($data as $row):?><?php echo base_url("Auth/borrowing/$row->Student_ID")?><?php endforeach; ?>"><i class="fa-solid fa-book-open-reader"></i> Borrowing History</a></li>
                     <li><a href="<?php echo base_url("Auth/virtual_ID")?>"><i class="fa-solid fa-id-card"></i> Virtual ID</a></li>
                     <li><a href="<?php echo base_url("Auth/profile")?>"><i class="fa-solid fa-user"></i> Profile</a></li>
-                    <li><a href="<?php echo base_url("Auth/logout")?>"><i class="fa-solid fa-right-from-bracket"></i>Logout</a></li>
+                    <li><a href="<?php echo base_url("Auth/logout")?>"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
                 </ul>
             </nav>
         </div>
         <div class="mobile_side">
-            <h4><i class="fa-solid fa-tablet-screen-button"></i> E-books</h4>
+            <h4><i class="fa-solid fa-table-columns"></i> Dashboard</h4>
+            <?php foreach($data as $row):?>
+            <div class="user-info">
+                <div class="qrBox">
+                    <img id="qrImage">
+                </div>
+                <script>
+                    let qrImg = document.getElementById("qrImage");
+
+                    function mobilegenerateQR(){
+                        qrImg.src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=" + "<?php echo $row->Student_ID; ?>";
+                    }
+                    mobilegenerateQR();
+                </script>
+                
+                <h6><?php echo $row->Fname; ?> <?php echo $row->MI; ?> <?php echo $row->Lname; ?></h6>
+                <p>Full name</p>
+                <h6 class="sID"><?php echo $row->Course; ?> <?php echo $row->Year; ?> <?php echo $row->Section; ?></h6>
+                <p>Course, Year, and Section</p>
+            </div>
+            <?php endforeach; ?>
             <nav>
                 <ul>
                     <li><a href="<?php echo base_url("Auth/home")?>"><i class="fa-solid fa-house"></i> Home</a></li>
@@ -54,10 +94,10 @@
                             <li><a href="<?php echo base_url("Auth/ebooks")?>" class="active"><i class="fa-solid fa-tablet-screen-button"></i> E-books</a></li>
                         </ul>
                     </li>
-                    <li><a href="<?php foreach($data as $row):?><?php echo base_url("Auth/borrowing/$row->Student_ID")?><?php endforeach; ?>"><i class="fa-solid fa-book-open-reader"></i> borrowing history</a></li>
+                    <li><a href="<?php foreach($data as $row):?><?php echo base_url("Auth/borrowing/$row->Student_ID")?><?php endforeach; ?>"><i class="fa-solid fa-book-open-reader"></i> Borrowing History</a></li>
                     <li><a href="<?php echo base_url("Auth/virtual_ID")?>"><i class="fa-solid fa-id-card"></i> Virtual ID</a></li>
                     <li><a href="<?php echo base_url("Auth/profile")?>"><i class="fa-solid fa-user"></i> Profile</a></li>
-                    <li><a href="<?php echo base_url("Auth/logout")?>"><i class="fa-solid fa-right-from-bracket"></i>Logout</a></li>
+                    <li><a href="<?php echo base_url("Auth/logout")?>"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
                 </ul>
             </nav>
         </div>

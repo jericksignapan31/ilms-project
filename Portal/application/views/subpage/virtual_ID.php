@@ -9,7 +9,7 @@
     <script src="https://kit.fontawesome.com/75d764fe7a.js" crossorigin="anonymous"></script>
     <title>iRead USTP</title>
 </head>
-<body style="background-image: url(<?php echo base_url('assets/image/bg-image-library.png') ?>);"  onload="generateQR()">
+<body style="background-image: url(<?php echo base_url('assets/image/bg-image-library.png') ?>);">
     <div class="header">
         <div class="header-container">
             <button onclick="mobile_nav()"><i class="fa-solid fa-bars"></i></button>
@@ -26,6 +26,24 @@
     <div class="body">
         <div class="side">
             <h4><i class="fa-solid fa-table-columns"></i> Dashboard</h4>
+            <?php foreach($data as $row):?>
+            <div class="user-info">
+                <div class="qrBox">
+                    <img id="qrImage">
+                </div>
+                <script>
+                    (function() {
+                        let qrImg = document.getElementById("qrImage");
+                        qrImg.src = "https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=" + "<?php echo $row->Student_ID; ?>";
+                    })();
+                </script>
+
+                <h6><?php echo $row->Fname; ?> <?php echo $row->MI; ?> <?php echo $row->Lname; ?></h6>
+                <p>Full name</p>
+                <h6 class="sID"><?php echo $row->Course; ?> <?php echo $row->Year; ?> <?php echo $row->Section; ?></h6>
+                <p>Course, Year, and Section</p>
+            </div>
+            <?php endforeach; ?>
             <nav>
                 <ul>
                     <li><a href="<?php echo base_url("Auth/home")?>"><i class="fa-solid fa-house"></i> Home</a></li>
@@ -46,6 +64,24 @@
 
         <div class="mobile_side">
             <h4><i class="fa-solid fa-table-columns"></i> Dashboard</h4>
+            <?php foreach($data as $row):?>
+            <div class="user-info">
+                <div class="qrBox">
+                    <img id="mobileqrImage">
+                </div>
+                <script>
+                    (function() {
+                        let mobileqrImg = document.getElementById("mobileqrImage");
+                        mobileqrImg.src = "https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=" + "<?php echo $row->Student_ID; ?>";
+                    })();
+                </script>
+                
+                <h6><?php echo $row->Fname; ?> <?php echo $row->MI; ?> <?php echo $row->Lname; ?></h6>
+                <p>Full name</p>
+                <h6 class="sID"><?php echo $row->Course; ?> <?php echo $row->Year; ?> <?php echo $row->Section; ?></h6>
+                <p>Course, Year, and Section</p>
+            </div>
+            <?php endforeach; ?>
             <nav>
                 <ul>
                     <li><a href="<?php echo base_url("Auth/home")?>"><i class="fa-solid fa-house"></i> Home</a></li>
@@ -105,18 +141,13 @@
                                 </div>
                                 <div class="Studentqr">
                                     <div class="qrBox">
-                                        <img id="qrImage">
+                                        <img id="virtualIDqrImage">
                                     </div>
                                     <script>
-                                        let qrImgss = document.getElementById("qrImage");
-                                        let qrTxt = document.getElementById("studentID");
-
-                                        function generateQR(){
-                                            qrImgss.src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=" + "<?php echo $row->Student_ID; ?>";
-
-                                            const sidebar = document.querySelector('.qrBox')
-                                            sidebar.style.display = 'block'
-                                        }
+                                        (function() {
+                                            let virtualIDqrImg = document.getElementById("virtualIDqrImage");
+                                            virtualIDqrImg.src = "https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=" + "<?php echo $row->Student_ID; ?>";
+                                        })();
                                     </script>
                                 </div>
                             </div>

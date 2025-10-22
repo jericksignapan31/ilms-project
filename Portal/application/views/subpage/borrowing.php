@@ -26,6 +26,26 @@
     <div class="body">
         <div class="side">
             <h4><i class="fa-solid fa-table-columns"></i> Dashboard</h4>
+            <?php foreach($result as $row):?>
+            <div class="user-info">
+                <div class="qrBox">
+                    <img id="mobileqrImage">
+                </div>
+                <script>
+                    let mobileqrImg = document.getElementById("mobileqrImage");
+
+                    function generateQR(){
+                        mobileqrImg.src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=" + "<?php echo $row->Student_ID; ?>";
+                    }
+                    generateQR();
+                </script>
+
+                <h6><?php echo $row->Fname; ?> <?php echo $row->MI; ?> <?php echo $row->Lname; ?></h6>
+                <p>Full name</p>
+                <h6 class="sID"><?php echo $row->Course; ?> <?php echo $row->Year; ?> <?php echo $row->Section; ?></h6>
+                <p>Course, Year, and Section</p>
+            </div>
+            <?php endforeach; ?>
 
             <nav>
                 <ul>
@@ -47,6 +67,26 @@
 
         <div class="mobile_side">
             <h4><i class="fa-solid fa-table-columns"></i> Dashboard</h4>
+            <?php foreach($result as $row):?>
+            <div class="user-info">
+                <div class="qrBox">
+                    <img id="qrImage">
+                </div>
+                <script>
+                    let qrImg = document.getElementById("qrImage");
+
+                    function mobilegenerateQR(){
+                        qrImg.src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=" + "<?php echo $row->Student_ID; ?>";
+                    }
+                    mobilegenerateQR();
+                </script>
+                
+                <h6><?php echo $row->Fname; ?> <?php echo $row->MI; ?> <?php echo $row->Lname; ?></h6>
+                <p>Full name</p>
+                <h6 class="sID"><?php echo $row->Course; ?> <?php echo $row->Year; ?> <?php echo $row->Section; ?></h6>
+                <p>Course, Year, and Section</p>
+            </div>
+            <?php endforeach; ?>
 
             <nav>
                 <ul>
