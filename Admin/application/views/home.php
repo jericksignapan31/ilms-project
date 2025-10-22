@@ -31,9 +31,9 @@
         <div class="content">
             <!-- Content for the body section -->
             <?php foreach($data as $row):?>
-                <h1>Welcome <?php echo $row->Fname; ?> <?php echo $row->MI; ?>. <?php echo $row->Lname; ?></h1>
+                <h1>Welcome, <?php echo $row->Fname; ?> <?php echo $row->MI; ?>. <?php echo $row->Lname; ?>!</h1>
             <?php endforeach; ?>
-            <p>The admin dashboard manage your library, rental system, and users easily from here.</p>
+            <p>Welcome to the Admin Dashboard. Manage your library, track borrowing transactions, and oversee users efficiently from here.</p>
         </div>
     </div>
 
