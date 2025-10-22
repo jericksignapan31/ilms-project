@@ -171,6 +171,32 @@ class Auth extends CI_Controller {
 			$this->load->view('login');
 		}
 	}
+	
+	function ebooks()
+	{
+		if(isset($_SESSION['Portal_login_Status']))
+		{
+			$status = $_SESSION['Portal_login_Status'];
+			if($status == "logged")
+			{
+				$email = $_SESSION['user_Email'];
+				$this->load->model('model');
+				$data['ebooks'] = $this->model->getActiveEbooks();
+				$data['data'] = $this->model->getUsername($email);
+
+				$this->load->view('subpage/ebooks', $data);
+			}
+			else
+			{
+				$this->load->view('login');
+			}
+		}
+		else
+		{
+			$this->load->view('login');
+		}
+	}
+	
 	function show_all_borrowable_books()
 	{
 		if(isset($_SESSION['Portal_login_Status']))
@@ -279,6 +305,38 @@ class Auth extends CI_Controller {
 			$this->load->view('login');
 		}
 	}
+	
+	function view_ebook()
+	{
+		if(isset($_SESSION['Portal_login_Status']))
+		{
+			$ebook_ID   = $this->uri->segment(3);
+			$student_ID = $this->uri->segment(4);
+			$status 	= $_SESSION['Portal_login_Status'];
+			
+			if($status == "logged")
+			{
+				$email = $_SESSION['user_Email'];
+				$this->load->model('model');
+				$data['ebook'] = $this->model->get_ebook($ebook_ID);
+				$data['data'] = $this->model->getUsername($email);
+				
+				// Increment view count
+				$this->model->increment_ebook_views($ebook_ID);
+
+				$this->load->view('subpage/view_ebook', $data);
+			}
+			else
+			{
+				$this->load->view('login');
+			}
+		}
+		else
+		{
+			$this->load->view('login');
+		}
+	}
+	
 	function view_book_all_books($page = 1)
 	{
 		if(isset($_SESSION['Portal_login_Status']))

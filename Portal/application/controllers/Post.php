@@ -341,4 +341,13 @@ class Post extends CI_Controller {
 		$this->model->cancel_reservation($ID);
 		redirect(base_url('Auth/borrowing'));
     }
+
+	function increment_ebook_download($ID)
+	{
+		$this->load->model('model');
+		$this->model->increment_ebook_downloads($ID);
+		
+		// Return success response
+		echo json_encode(['status' => 'success']);
+	}
 }

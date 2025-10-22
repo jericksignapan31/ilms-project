@@ -251,4 +251,35 @@ class model extends CI_Model {
 			return false;
 		}
 	}
+
+	// E-book functions
+	function getActiveEbooks()
+	{
+		$this->db->where('status', 'active');
+		$this->db->order_by('ID', 'DESC');
+		$query = $this->db->get('ebooks_tbl');
+		return $query->result();
+	}
+
+	function get_ebook($ID)
+	{
+		$this->db->where('ID', $ID);
+		$this->db->where('status', 'active');
+		$query = $this->db->get('ebooks_tbl');
+		return $query->result();
+	}
+
+	function increment_ebook_views($ID)
+	{
+		$this->db->set('views', 'views+1', FALSE);
+		$this->db->where('ID', $ID);
+		$this->db->update('ebooks_tbl');
+	}
+
+	function increment_ebook_downloads($ID)
+	{
+		$this->db->set('downloads', 'downloads+1', FALSE);
+		$this->db->where('ID', $ID);
+		$this->db->update('ebooks_tbl');
+	}
 }

@@ -76,7 +76,13 @@
             <nav>
                 <ul>
                     <li><a class="active" href="<?php echo base_url("Auth/home")?>"><i class="fa-solid fa-house"></i> Home</a></li>
-                    <li><a href="<?php echo base_url("Auth/library")?>"><i class="fa-solid fa-book"></i> Library</a></li>
+                    <li>
+                        <a href="#" onclick="toggleLibraryMenu(event)"><i class="fa-solid fa-book"></i> Library <i class="fa-solid fa-chevron-down"></i></a>
+                        <ul class="submenu" id="librarySubmenu">
+                            <li><a href="<?php echo base_url("Auth/library")?>"><i class="fa-solid fa-book"></i> Physical Books</a></li>
+                            <li><a href="<?php echo base_url("Auth/ebooks")?>"><i class="fa-solid fa-tablet-screen-button"></i> E-books</a></li>
+                        </ul>
+                    </li>
                     <li><a href="<?php foreach($data as $row):?><?php echo base_url("Auth/borrowing/$row->Student_ID")?><?php endforeach; ?>"><i class="fa-solid fa-book-open-reader"></i> borrowing history</a></li>
                     <li><a href="<?php echo base_url("Auth/virtual_ID")?>"><i class="fa-solid fa-id-card"></i> Virtual ID</a></li>
                     <li><a href="<?php echo base_url("Auth/profile")?>"><i class="fa-solid fa-user"></i> Profile</a></li>
@@ -116,7 +122,13 @@
             <nav>
                 <ul>
                     <li><a class="active" href="<?php echo base_url("Auth/home")?>"><i class="fa-solid fa-house"></i> Home</a></li>
-                    <li><a href="<?php echo base_url("Auth/library")?>"><i class="fa-solid fa-book"></i> Library</a></li>
+                    <li>
+                        <a href="#" onclick="toggleLibraryMenuMobile(event)"><i class="fa-solid fa-book"></i> Library <i class="fa-solid fa-chevron-down"></i></a>
+                        <ul class="submenu" id="librarySubmenuMobile">
+                            <li><a href="<?php echo base_url("Auth/library")?>"><i class="fa-solid fa-book"></i> Physical Books</a></li>
+                            <li><a href="<?php echo base_url("Auth/ebooks")?>"><i class="fa-solid fa-tablet-screen-button"></i> E-books</a></li>
+                        </ul>
+                    </li>
                     <li><a href="<?php foreach($data as $row):?><?php echo base_url("Auth/borrowing/$row->Student_ID")?><?php endforeach; ?>"><i class="fa-solid fa-book-open-reader"></i> borrowing history</a></li>
                     <li><a href="<?php echo base_url("Auth/virtual_ID")?>"><i class="fa-solid fa-id-card"></i> Virtual ID</a></li>
                     <li><a href="<?php echo base_url("Auth/profile")?>"><i class="fa-solid fa-user"></i> Profile</a></li>
@@ -221,5 +233,65 @@
             </script>
         </div>
     </div>
+
+    <style>
+        /* Submenu styling */
+        .submenu {
+            display: none;
+            list-style: none;
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+        .submenu.active {
+            display: block;
+        }
+        .submenu li {
+            margin: 5px 0;
+        }
+        .submenu li a {
+            font-size: 14px;
+            padding: 8px 15px;
+            display: block;
+            color: #666;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .submenu li a:hover {
+            background: #f0f0f0;
+            color: #2237a2;
+            padding-left: 20px;
+        }
+        .submenu li a i {
+            margin-right: 8px;
+        }
+        nav ul li > a i.fa-chevron-down {
+            float: right;
+            transition: transform 0.3s ease;
+        }
+        nav ul li > a.active-dropdown i.fa-chevron-down {
+            transform: rotate(180deg);
+        }
+    </style>
+
+    <script>
+        function toggleLibraryMenu(event) {
+            event.preventDefault();
+            const submenu = document.getElementById('librarySubmenu');
+            const link = event.currentTarget;
+            
+            submenu.classList.toggle('active');
+            link.classList.toggle('active-dropdown');
+        }
+
+        function toggleLibraryMenuMobile(event) {
+            event.preventDefault();
+            const submenu = document.getElementById('librarySubmenuMobile');
+            const link = event.currentTarget;
+            
+            submenu.classList.toggle('active');
+            link.classList.toggle('active-dropdown');
+        }
+    </script>
 </body>
 </html>
