@@ -263,8 +263,10 @@ class Post extends CI_Controller {
         {
             if(isset($_POST['submit']))
             {
-                if(!empty($_FILES['file-upload']['name'] == ""))
+                // Check if file was uploaded
+                if(empty($_FILES['file-upload']['name']))
                 {
+                    // No file uploaded - update without profile image
                     $data = array(
                         'Fname'             => $fname,
                         'Lname'             => $lname,
@@ -286,6 +288,7 @@ class Post extends CI_Controller {
                 }
                 else
                 {
+                    // File uploaded - process upload
                     $config['allowed_types']  = 'jpg|jpeg|png';
                     $config['upload_path']    = './assets/image/uploads/';
                     $config['encrypt_name']   = false;
@@ -309,8 +312,14 @@ class Post extends CI_Controller {
                             'Birthdate'         => $birthdate,
                         );
                         $this->load->model('model');
-                    $this->model->update_user($data, $student_ID);
-                    redirect(base_url('Auth/logout'));
+                        $this->model->update_user($data, $student_ID);
+                        redirect(base_url('Auth/logout'));
+                    }
+                    else
+                    {
+                        // Upload failed
+                        $this->session->set_flashdata('erroremail', '<i class="fa-solid fa-circle-exclamation"></i> ' . $this->upload->display_errors());
+                        redirect(base_url('Auth/profile'));
                     }
                 }
             }

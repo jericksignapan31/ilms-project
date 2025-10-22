@@ -10,7 +10,7 @@
     <script src="https://kit.fontawesome.com/75d764fe7a.js" crossorigin="anonymous"></script>
     <title>iRead USTP</title>
 </head>
-<body style="background-image: url(<?php echo base_url('assets/image/bg-image-library.png') ?>);" onload="generateQR()">
+<body style="background-image: url(<?php echo base_url('assets/image/bg-image-library.png') ?>);">
     <div class="header">
         <div class="header-container">
         <div class="image">
@@ -49,18 +49,13 @@
                             </div>
                             <div class="group2">
                                 <div class="qrBox">
-                                    <img id="qrImage">
+                                    <img id="profileQrImage">
                                 </div>
                                 <script>
-                                    let qrImg = document.getElementById("qrImage");
-                                    let qrTxt = document.getElementById("studentID");
-
-                                    function generateQR(){
-                                        qrImg.src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + "<?php echo $row->Student_ID; ?>";
-
-                                        const sidebar = document.querySelector('.qrBox')
-                                        sidebar.style.display = 'block'
-                                    }
+                                    (function() {
+                                        let profileQrImg = document.getElementById("profileQrImage");
+                                        profileQrImg.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + "<?php echo $row->Student_ID; ?>";
+                                    })();
                                 </script>
                             </div>
                         </div>
