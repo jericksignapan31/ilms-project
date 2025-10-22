@@ -61,29 +61,63 @@ body {
 	background-color: rgba(246, 246, 246);
 }
 .side h4 {
-	padding: 10px;
+	font-size: 16px;
+	font-weight: 600;
+	color: #2237a2;
+	padding: 15px 15px 10px 15px;
+	border-bottom: 2px solid #e0e0e0;
+	margin-bottom: 10px;
+}
+.side h4 i {
+	margin-right: 10px;
 }
 
 nav {
 	width: 100%;
 	height: fit-content;
-	padding-left: 15px;
+	padding: 10px 15px;
+}
+nav ul {
+	margin: 0;
+	padding: 0;
 }
 nav li {
-	padding: 5px;
+	padding: 2px 0;
 	list-style: none;
 }
 nav a {
-	color: #333;
+	color: #555;
 	text-decoration: none;
-	transition: color 0.3s ease;
-	font-size: 12px;
+	transition: all 0.3s ease;
+	font-size: 15px;
+	font-weight: 500;
+	padding: 12px 15px;
+	border-radius: 8px;
+	display: block;
+	position: relative;
+}
+nav a i {
+	margin-right: 12px;
+	font-size: 16px;
+	width: 20px;
+	text-align: center;
 }
 .active {
-	color: rgba(34, 55, 162);
+	background: linear-gradient(135deg, #2237a2 0%, #1a2c7f 100%);
+	color: #fff !important;
+	box-shadow: 0 4px 12px rgba(34, 55, 162, 0.3);
+	font-weight: 600;
 }
 nav a:hover {
-	color: rgba(34, 55, 162);
+	background: linear-gradient(135deg, #e8ecff 0%, #d4dbff 100%);
+	color: #2237a2;
+	transform: translateX(5px);
+	box-shadow: 0 2px 8px rgba(34, 55, 162, 0.15);
+}
+nav a.active:hover {
+	background: linear-gradient(135deg, #2237a2 0%, #1a2c7f 100%);
+	color: #fff;
+	transform: translateX(5px);
 }
 
 .mobile_side {
@@ -92,9 +126,18 @@ nav a:hover {
 	background-color: rgba(246, 246, 246);
 	position: absolute;
 	display: none;
+	overflow-y: auto;
 }
 .mobile_side h4 {
-	padding: 10px;
+	font-size: 16px;
+	font-weight: 600;
+	color: #2237a2;
+	padding: 15px 15px 10px 15px;
+	border-bottom: 2px solid #e0e0e0;
+	margin-bottom: 10px;
+}
+.mobile_side h4 i {
+	margin-right: 10px;
 }
 
 .main {

@@ -25,28 +25,40 @@
     </div>
     <div class="body">
         <div class="side">
-            <h4><i class="fa-solid fa-book"></i> Library</h4>
+            <h4><i class="fa-solid fa-table-columns"></i> Dashboard</h4>
             <nav>
                 <ul>
                     <li><a href="<?php echo base_url("Auth/home")?>"><i class="fa-solid fa-house"></i> Home</a></li>
-                    <li><a class="active" href="<?php echo base_url("Auth/library")?>"><i class="fa-solid fa-book"></i> Library</a></li>
-                    <li><a href="<?php foreach($data as $row):?><?php echo base_url("Auth/borrowing/$row->Student_ID")?><?php endforeach; ?>"><i class="fa-solid fa-book-open-reader"></i> borrowing history</a></li>
+                    <li>
+                        <a href="#" onclick="toggleLibraryMenu(event)" class="active-dropdown"><i class="fa-solid fa-book"></i> Library <i class="fa-solid fa-chevron-down"></i></a>
+                        <ul class="submenu active" id="librarySubmenu">
+                            <li><a class="active" href="<?php echo base_url("Auth/library")?>"><i class="fa-solid fa-book"></i> Physical Books</a></li>
+                            <li><a href="<?php echo base_url("Auth/ebooks")?>"><i class="fa-solid fa-tablet-screen-button"></i> E-books</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="<?php foreach($data as $row):?><?php echo base_url("Auth/borrowing/$row->Student_ID")?><?php endforeach; ?>"><i class="fa-solid fa-book-open-reader"></i> Borrowing History</a></li>
                     <li><a href="<?php echo base_url("Auth/virtual_ID")?>"><i class="fa-solid fa-id-card"></i> Virtual ID</a></li>
                     <li><a href="<?php echo base_url("Auth/profile")?>"><i class="fa-solid fa-user"></i> Profile</a></li>
-                    <li><a href="<?php echo base_url("Auth/logout")?>"><i class="fa-solid fa-right-from-bracket"></i>Logout</a></li>
+                    <li><a href="<?php echo base_url("Auth/logout")?>"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
                 </ul>
             </nav>
         </div>
         <div class="mobile_side">
-            <h4><i class="fa-solid fa-book"></i> Library</h4>
+            <h4><i class="fa-solid fa-table-columns"></i> Dashboard</h4>
             <nav>
                 <ul>
                     <li><a href="<?php echo base_url("Auth/home")?>"><i class="fa-solid fa-house"></i> Home</a></li>
-                    <li><a class="active" href="<?php echo base_url("Auth/library")?>"><i class="fa-solid fa-book"></i> Library</a></li>
-                    <li><a href="<?php foreach($data as $row):?><?php echo base_url("Auth/borrowing/$row->Student_ID")?><?php endforeach; ?>"><i class="fa-solid fa-book-open-reader"></i> borrowing history</a></li>
+                    <li>
+                        <a href="#" onclick="toggleLibraryMenuMobile(event)" class="active-dropdown"><i class="fa-solid fa-book"></i> Library <i class="fa-solid fa-chevron-down"></i></a>
+                        <ul class="submenu active" id="librarySubmenuMobile">
+                            <li><a class="active" href="<?php echo base_url("Auth/library")?>"><i class="fa-solid fa-book"></i> Physical Books</a></li>
+                            <li><a href="<?php echo base_url("Auth/ebooks")?>"><i class="fa-solid fa-tablet-screen-button"></i> E-books</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="<?php foreach($data as $row):?><?php echo base_url("Auth/borrowing/$row->Student_ID")?><?php endforeach; ?>"><i class="fa-solid fa-book-open-reader"></i> Borrowing History</a></li>
                     <li><a href="<?php echo base_url("Auth/virtual_ID")?>"><i class="fa-solid fa-id-card"></i> Virtual ID</a></li>
                     <li><a href="<?php echo base_url("Auth/profile")?>"><i class="fa-solid fa-user"></i> Profile</a></li>
-                    <li><a href="<?php echo base_url("Auth/logout")?>"><i class="fa-solid fa-right-from-bracket"></i>Logout</a></li>
+                    <li><a href="<?php echo base_url("Auth/logout")?>"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
                 </ul>
             </nav>
         </div>
@@ -152,6 +164,96 @@
             let shortenedText = shortenText(title.textContent, 30); // Set 100 as the max length
             title.textContent = shortenedText; // Update the element's text content
         });
+    </script>
+
+    <style>
+        /* Submenu styling */
+        .submenu {
+            display: none;
+            list-style: none;
+            padding-left: 15px;
+            margin: 5px 0;
+            background: rgba(255, 255, 255, 0.5);
+            border-left: 3px solid #2237a2;
+            border-radius: 5px;
+        }
+        .submenu.active {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .submenu li {
+            margin: 2px 0;
+        }
+        .submenu li a {
+            font-size: 14px;
+            padding: 10px 15px;
+            display: block;
+            color: #666;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        .submenu li a:hover {
+            background: linear-gradient(135deg, #e8ecff 0%, #d4dbff 100%);
+            color: #2237a2;
+            padding-left: 25px;
+            box-shadow: 0 2px 8px rgba(34, 55, 162, 0.15);
+        }
+        .submenu li a.active {
+            background: linear-gradient(135deg, #2237a2 0%, #1a2c7f 100%);
+            color: #fff !important;
+            box-shadow: 0 3px 10px rgba(34, 55, 162, 0.3);
+            font-weight: 600;
+        }
+        .submenu li a.active:hover {
+            background: linear-gradient(135deg, #2237a2 0%, #1a2c7f 100%);
+            color: #fff;
+            transform: none;
+            padding-left: 25px;
+        }
+        .submenu li a i {
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        nav ul li > a i.fa-chevron-down {
+            float: right;
+            transition: transform 0.3s ease;
+            font-size: 12px;
+        }
+        nav ul li > a.active-dropdown i.fa-chevron-down {
+            transform: rotate(180deg);
+        }
+    </style>
+
+    <script>
+        function toggleLibraryMenu(event) {
+            event.preventDefault();
+            const submenu = document.getElementById('librarySubmenu');
+            const link = event.currentTarget;
+            
+            submenu.classList.toggle('active');
+            link.classList.toggle('active-dropdown');
+        }
+
+        function toggleLibraryMenuMobile(event) {
+            event.preventDefault();
+            const submenu = document.getElementById('librarySubmenuMobile');
+            const link = event.currentTarget;
+            
+            submenu.classList.toggle('active');
+            link.classList.toggle('active-dropdown');
+        }
     </script>
 
 </body>

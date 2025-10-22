@@ -239,38 +239,80 @@
         .submenu {
             display: none;
             list-style: none;
-            padding-left: 20px;
-            margin-top: 5px;
+            padding-left: 15px;
+            margin: 5px 0;
+            background: rgba(255, 255, 255, 0.5);
+            border-left: 3px solid #2237a2;
+            border-radius: 5px;
         }
         .submenu.active {
             display: block;
+            animation: slideDown 0.3s ease;
+        }
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         .submenu li {
-            margin: 5px 0;
+            margin: 2px 0;
         }
         .submenu li a {
             font-size: 14px;
-            padding: 8px 15px;
+            padding: 10px 15px;
             display: block;
             color: #666;
             text-decoration: none;
             border-radius: 5px;
             transition: all 0.3s ease;
+            font-weight: 500;
         }
         .submenu li a:hover {
-            background: #f0f0f0;
+            background: linear-gradient(135deg, #e8ecff 0%, #d4dbff 100%);
             color: #2237a2;
-            padding-left: 20px;
+            padding-left: 25px;
+            box-shadow: 0 2px 8px rgba(34, 55, 162, 0.15);
+        }
+        .submenu li a.active {
+            background: linear-gradient(135deg, #2237a2 0%, #1a2c7f 100%);
+            color: #fff !important;
+            box-shadow: 0 3px 10px rgba(34, 55, 162, 0.3);
+            font-weight: 600;
+        }
+        .submenu li a.active:hover {
+            background: linear-gradient(135deg, #2237a2 0%, #1a2c7f 100%);
+            color: #fff;
+            transform: none;
+            padding-left: 25px;
         }
         .submenu li a i {
-            margin-right: 8px;
+            margin-right: 10px;
+            font-size: 14px;
         }
         nav ul li > a i.fa-chevron-down {
             float: right;
             transition: transform 0.3s ease;
+            font-size: 12px;
         }
         nav ul li > a.active-dropdown i.fa-chevron-down {
             transform: rotate(180deg);
+        }
+        /* Enhanced sidebar header */
+        .side h4, .mobile_side h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2237a2;
+            padding: 15px 15px 10px 15px;
+            border-bottom: 2px solid #e0e0e0;
+            margin-bottom: 10px;
+        }
+        .side h4 i, .mobile_side h4 i {
+            margin-right: 10px;
         }
     </style>
 
@@ -292,6 +334,34 @@
             submenu.classList.toggle('active');
             link.classList.toggle('active-dropdown');
         }
+
+        // Set active menu item based on current URL
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentUrl = window.location.href;
+            const menuLinks = document.querySelectorAll('nav a');
+            
+            menuLinks.forEach(link => {
+                // Remove default active class
+                if (!currentUrl.includes('Auth/home') && link.classList.contains('active')) {
+                    link.classList.remove('active');
+                }
+                
+                // Add active class to matching link
+                if (currentUrl.includes(link.getAttribute('href')) && link.getAttribute('href') !== '#') {
+                    link.classList.add('active');
+                    
+                    // If it's a submenu item, also expand the parent menu
+                    const parentSubmenu = link.closest('.submenu');
+                    if (parentSubmenu) {
+                        parentSubmenu.classList.add('active');
+                        const parentLink = parentSubmenu.previousElementSibling;
+                        if (parentLink) {
+                            parentLink.classList.add('active-dropdown');
+                        }
+                    }
+                }
+            });
+        });
     </script>
 </body>
 </html>
