@@ -2,9 +2,12 @@
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="<?php echo base_url(); ?>assets/image/logo.png" type="image/gif" sizes="16x16">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/members.css">
-    <script src="<?php echo base_url(); ?>assets/javascript/hide_show_button.js"></script>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="icon" href="<?php echo base_url(); ?>assets/image/logo.png?v=<?php echo time(); ?>" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/members.css?v=<?php echo time(); ?>">
+    <script src="<?php echo base_url(); ?>assets/javascript/hide_show_button.js?v=<?php echo time(); ?>"></script>
     <script src="https://kit.fontawesome.com/75d764fe7a.js" crossorigin="anonymous"></script>
     <title>iRead IIS | ADMIN</title>
 </head>
@@ -50,7 +53,7 @@
                 </tr>
                 <?php foreach($results as $row):?>
                 <tr>
-                    <td><img src="http://192.168.0.104/USTP/Library_Management_System/Portal/assets/image/uploads/<?php echo $row->profile; ?>" alt="" srcset=""></td>
+                    <td><img src="http://192.168.0.104/USTP/Library_Management_System/Portal/assets/image/uploads/<?php echo $row->profile; ?>?v=<?php echo time(); ?>" alt="" srcset=""></td>
                     <td><?php echo $row->Student_ID; ?></td>
                     <td><?php echo $row->Fname; ?> <?php echo $row->Lname; ?> <?php echo $row->MI; ?></td>
                     <td><?php echo $row->Address; ?></td>

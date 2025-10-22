@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="<?php echo base_url(); ?>assets/image/logo.png" type="image/gif" sizes="16x16">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/home.css">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="icon" href="<?php echo base_url(); ?>assets/image/logo.png?v=<?php echo time(); ?>" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/home.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/75d764fe7a.js" crossorigin="anonymous"></script>
     <title>iRead IIS | ADMIN</title>
 
 </head>
-<body style="background-image: url(<?php echo base_url('assets/image/bg-image-library.png') ?>);">
+<body style="background-image: url('<?php echo base_url('assets/image/bg-image-library.png?v=' . time()); ?>');">
     <div class="container"></div>
 
     <div class="header">
-        <img src="<?php echo base_url('assets/image/USTP-Logo2.png'); ?>" alt="USTP Logo">
+        <img src="<?php echo base_url('assets/image/USTP-Logo2.png?v=' . time()); ?>" alt="USTP Logo">
 
         <ul class="nav">
             <li><a href="<?php echo base_url("Auth/home"); ?>">Home</a></li>

@@ -59,9 +59,8 @@
                         <div class="group-1_column-1">
                             <img src="<?php echo base_url('assets/image/USTP-Logo.png'); ?>" alt="" srcset="">
                             <div class="tag">
-                                <h6>UNIVERSITY OF SCIENCE AND TECHNOLOGY</h6>
-                                <h6>OF SOUTHERN PHILIPPINES</h6>
-                                <P>USTP Villanueva Campus (Annex)</P>
+                                <h6>INDULANG INTEGRATED SCHOOL</h6>
+                                <h6>Talakag Bukidnon</h6>
                             </div>
                         </div>
                         <div class="group-1_column-2">

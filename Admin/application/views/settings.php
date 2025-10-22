@@ -2,11 +2,14 @@
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="<?php echo base_url(); ?>assets/image/logo.png" type="image/gif" sizes="16x16">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/settings.css">
-    <script src="<?php echo base_url(); ?>assets/javascript/display_upload.js"></script>
-    <script src="<?php echo base_url(); ?>assets/javascript/hide-show-pass.js"></script>
-    <script src="<?php echo base_url(); ?>assets/javascript/check_inputs.js"></script>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="icon" href="<?php echo base_url(); ?>assets/image/logo.png?v=<?php echo time(); ?>" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/settings.css?v=<?php echo time(); ?>">
+    <script src="<?php echo base_url(); ?>assets/javascript/display_upload.js?v=<?php echo time(); ?>"></script>
+    <script src="<?php echo base_url(); ?>assets/javascript/hide-show-pass.js?v=<?php echo time(); ?>"></script>
+    <script src="<?php echo base_url(); ?>assets/javascript/check_inputs.js?v=<?php echo time(); ?>"></script>
     <script src="https://kit.fontawesome.com/75d764fe7a.js" crossorigin="anonymous"></script>
     <title>iRead IIS | ADMIN</title>
 </head>
@@ -22,7 +25,7 @@
             <li><a href=""> <i class="fa-solid fa-clipboard-list"></i> Library schedule </a></li>
         </ul>
     </div>
-    <div class="main" style="background-image: url(<?php echo base_url('assets/image/Main-Library.png') ?>);">
+    <div class="main" style="background-image: url('<?php echo base_url('assets/image/Main-Library.png?v=' . time()); ?>');">
         <div class="container">
         <?php foreach($data as $row):?>
             <div class="col-1">
@@ -35,7 +38,7 @@
                     <div class="content-1">
                         <div class="profile">
                             <div class="profile-img">
-                                <img id="imageDisplay" src="<?php echo base_url('assets/image/uploads/') ?><?php echo $row->profile; ?>" alt="Image Preview">
+                                <img id="imageDisplay" src="<?php echo base_url('assets/image/uploads/' . $row->profile . '?v=' . time()); ?>" alt="Image Preview">
                                 <div class="profile-desc">
                                     <h6>Profile picture</h6>
                                     <p>PNG, JPEG only</p>
