@@ -1,3 +1,25 @@
+function hide_show_sub_nav_book(){
+    const content = document.getElementById('sub-dropdown');
+    if (content.style.display === 'none' || content.style.display === '') {
+        content.style.display = 'block';
+        content.classList.add('active');
+    } else {
+        content.style.display = 'none';
+        content.classList.remove('active');
+    }
+}
+
+function hide_show_sub_nav_trans(){
+    const content = document.getElementById('sub-dropdown-trans');
+    if (content.style.display === 'none' || content.style.display === '') {
+        content.style.display = 'block';
+        content.classList.add('active');
+    } else {
+        content.style.display = 'none';
+        content.classList.remove('active');
+    }
+}
+
 function hide_show_sub_nav_book_members(){
     const toggleButton = document.getElementById('toggleButton');
     const content = document.getElementById('sub-dropdown-members');
