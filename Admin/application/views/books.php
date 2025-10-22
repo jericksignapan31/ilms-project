@@ -15,6 +15,8 @@
         </div>
         <hr>
         <ul class="nav">
+            <li><a href="<?php echo base_url("Auth/books");?>"><i class="fa-solid fa-book"></i> Physical Books</a></li>
+            <li><a href="<?php echo base_url("Auth/ebooks");?>"><i class="fa-solid fa-tablet-screen-button"></i> Digital Library</a></li>
             <li><a onclick="hide_show_sub_nav_book_inventory()" href="#"><i class="fa-solid fa-list"></i>Inventory</a></li>
                 <ul id="sub-dropdown-management" class="sub-dropdown">
                     <li><a onclick="hide_show_sub_nav_book_management()" href="#"><i class="fa-solid fa-book"></i> Manage books</a></li>

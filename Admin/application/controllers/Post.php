@@ -594,4 +594,168 @@ class Post extends CI_Controller {
         $this->session->set_flashdata('borrow-approved','<i class="fa-solid fa-circle-check"></i> Book borrowing approved.');
         redirect(base_url('Auth/borrow_approval'));
     }
+
+    // E-BOOK MANAGEMENT FUNCTIONS
+    function add_ebook()
+    {
+        if(isset($_POST['submit']))
+        {
+            $title          = $_POST['title'];
+            $author         = $_POST['author'];
+            $isbn           = $_POST['isbn'];
+            $category       = $_POST['category'];
+            $description    = $_POST['description'];
+            $publisher      = $_POST['publisher'];
+            $year           = $_POST['year'];
+            $pages          = $_POST['pages'];
+            $language       = $_POST['language'];
+
+            // Check if ebook file is uploaded
+            if(!empty($_FILES['ebook-file']['name']))
+            {
+                $config['allowed_types']  = 'pdf|epub|mobi|doc|docx';
+                $config['upload_path']    = './assets/ebooks/';
+                $config['max_size']       = 51200; // 50MB max
+                $config['encrypt_name']   = false;
+                
+                $this->load->library('upload', $config);
+                
+                if($this->upload->do_upload('ebook-file'))
+                {
+                    $file_data      = $this->upload->data();
+                    $file_name      = $file_data['file_name'];
+                    $file_path      = 'assets/ebooks/' . $file_name;
+                    $file_size      = round($file_data['file_size'] / 1024, 2) . ' MB'; // Convert to MB
+                    $file_ext       = strtoupper($file_data['file_ext']);
+                    $file_type      = str_replace('.', '', $file_ext);
+
+                    // Upload thumbnail if provided
+                    $thumbnail = 'default_ebook.jpg';
+                    if(!empty($_FILES['thumbnail']['name']))
+                    {
+                        $thumb_config['allowed_types']  = 'jpg|jpeg|png';
+                        $thumb_config['upload_path']    = './assets/image/uploads/ebook_thumbnails/';
+                        $thumb_config['encrypt_name']   = false;
+                        
+                        $this->upload->initialize($thumb_config);
+                        if($this->upload->do_upload('thumbnail'))
+                        {
+                            $thumbnail = $_FILES['thumbnail']['name'];
+                        }
+                    }
+
+                    $ebook_data = array(
+                        'title'         => $title,
+                        'author'        => $author,
+                        'isbn'          => $isbn,
+                        'category'      => $category,
+                        'description'   => $description,
+                        'file_path'     => $file_path,
+                        'file_name'     => $file_name,
+                        'file_type'     => $file_type,
+                        'file_size'     => $file_size,
+                        'thumbnail'     => $thumbnail,
+                        'publisher'     => $publisher,
+                        'year'          => $year,
+                        'pages'         => $pages,
+                        'language'      => $language,
+                        'status'        => 'active'
+                    );
+
+                    $this->load->model('model');
+                    $status = $this->model->add_ebook($ebook_data);
+                    $this->session->set_flashdata('ebook-saved','<i class="fa-solid fa-circle-check"></i> E-book uploaded successfully');
+                    redirect(base_url('Auth/add_ebook'));
+                }
+                else
+                {
+                    $error = $this->upload->display_errors();
+                    $this->session->set_flashdata('ebook-error', $error);
+                    redirect(base_url('Auth/add_ebook'));
+                }
+            }
+            else
+            {
+                $this->session->set_flashdata('ebook-error','<i class="fa-solid fa-circle-exclamation"></i> Please select an e-book file');
+                redirect(base_url('Auth/add_ebook'));
+            }
+        }
+    }
+
+    function update_ebook()
+    {
+        $ID             = $_POST['ID'];
+        $title          = $_POST['title'];
+        $author         = $_POST['author'];
+        $isbn           = $_POST['isbn'];
+        $category       = $_POST['category'];
+        $description    = $_POST['description'];
+        $publisher      = $_POST['publisher'];
+        $year           = $_POST['year'];
+        $pages          = $_POST['pages'];
+        $language       = $_POST['language'];
+
+        $ebook_data = array(
+            'title'         => $title,
+            'author'        => $author,
+            'isbn'          => $isbn,
+            'category'      => $category,
+            'description'   => $description,
+            'publisher'     => $publisher,
+            'year'          => $year,
+            'pages'         => $pages,
+            'language'      => $language
+        );
+
+        $this->load->model('model');
+        $status = $this->model->update_ebook($ebook_data, $ID);
+        $this->session->set_flashdata('ebook-updated','<i class="fa-solid fa-circle-check"></i> E-book updated');
+        redirect(base_url('Auth/update_ebook'));
+    }
+
+    function delete_ebook()
+    {
+        $ID = $this->uri->segment(3);
+        $this->load->model('model');
+        $this->model->delete_ebook($ID);
+        $this->session->set_flashdata('ebook-deleted','<i class="fa-solid fa-circle-check"></i> E-book deleted');
+        redirect(base_url('Auth/delete_ebook'));
+    }
+
+    function archive_ebook()
+    {
+        $ID = $this->uri->segment(3);
+
+        $ebook_data = array(
+            'status' => 'archived',
+        );
+
+        $this->load->model('model');
+        $this->model->archive_ebook($ID, $ebook_data);
+        $this->session->set_flashdata('ebook-archived','<i class="fa-solid fa-circle-check"></i> E-book archived');
+        redirect(base_url('Auth/delete_ebook'));
+    }
+
+    function restore_ebook()
+    {
+        $ID = $this->uri->segment(3);
+
+        $ebook_data = array(
+            'status' => 'active',
+        );
+
+        $this->load->model('model');
+        $this->model->archive_ebook($ID, $ebook_data);
+        $this->session->set_flashdata('ebook-restored','<i class="fa-solid fa-circle-check"></i> E-book restored');
+        redirect(base_url('Auth/archive_ebook'));
+    }
+
+    function permanent_delete_ebook()
+    {
+        $ID = $this->uri->segment(3);
+        $this->load->model('model');
+        $this->model->delete_ebook($ID);
+        $this->session->set_flashdata('ebook-deleted','<i class="fa-solid fa-circle-check"></i> E-book permanently deleted');
+        redirect(base_url('Auth/archive_ebook'));
+    }
 }

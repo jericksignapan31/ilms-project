@@ -330,4 +330,89 @@ class model extends CI_Model {
 		$this->db->where('ID', $transactionID);
 		$this->db->update('borrow_tbl', $book_borrow);
 	}
+
+	// E-BOOK MANAGEMENT FUNCTIONS
+	function add_ebook($ebook_data)
+	{
+		$this->db->insert('ebooks_tbl', $ebook_data);
+	}
+
+	function getEbooks()
+	{
+		$this->db->where('status', 'active');
+		$this->db->order_by('ID', 'DESC');
+		$query = $this->db->get('ebooks_tbl');
+		return $query->result();
+	}
+
+	function get_ebook($ID)
+	{
+		$this->db->where('ID', $ID);
+		$query = $this->db->get('ebooks_tbl');
+		return $query->result();
+	}
+
+	function update_ebook($ebook_data, $ID)
+	{
+		$this->db->where('ID', $ID);
+		$this->db->update('ebooks_tbl', $ebook_data);
+	}
+
+	function delete_ebook($ID)
+	{
+		$this->db->where('ID', $ID);
+		$this->db->delete('ebooks_tbl');
+	}
+
+	function checkEbook($isbn)
+	{
+		$query = $this->db->query("SELECT * FROM ebooks_tbl WHERE isbn='$isbn'");
+		if($query->num_rows() >= 1)
+		{
+			return $query->row();
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	function search_ebooks($search_query)
+	{
+		$this->db->like('title', $search_query);
+		$this->db->or_like('author', $search_query);
+		$this->db->or_like('category', $search_query);
+		$this->db->or_like('isbn', $search_query);
+		$this->db->where('status', 'active');
+		$query = $this->db->get('ebooks_tbl');
+		return $query->result();
+	}
+
+	function increment_ebook_downloads($ID)
+	{
+		$this->db->set('downloads', 'downloads+1', FALSE);
+		$this->db->where('ID', $ID);
+		$this->db->update('ebooks_tbl');
+	}
+
+	function increment_ebook_views($ID)
+	{
+		$this->db->set('views', 'views+1', FALSE);
+		$this->db->where('ID', $ID);
+		$this->db->update('ebooks_tbl');
+	}
+
+	function archive_ebook($ID, $ebook_data)
+	{
+		$this->db->where('ID', $ID);
+		$this->db->update('ebooks_tbl', $ebook_data);
+	}
+
+	function getArchivedEbooks()
+	{
+		$this->db->where('status', 'archived');
+		$this->db->order_by('ID', 'DESC');
+		$query = $this->db->get('ebooks_tbl');
+		return $query->result();
+	}
 }

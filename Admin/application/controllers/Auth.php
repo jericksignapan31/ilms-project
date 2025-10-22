@@ -476,4 +476,115 @@ class Auth extends CI_Controller {
 		$data['most_borrowers'] = $this->model->get_most_borrower();
 		$this->load->view('reports_most_borrower', $data);
     }
+
+	// E-BOOK MANAGEMENT FUNCTIONS
+	function ebooks()
+	{
+		if(isset($_SESSION['login_Status']))
+		{
+			$status = $_SESSION['login_Status'];
+			if($status == "logged")
+			{
+				$this->load->model('model');
+				$data['results'] = $this->model->getEbooks();
+				$this->load->view('ebooks', $data);
+			}
+			else
+			{
+				$this->load->view('index');
+			}
+		}
+		else
+		{
+			$this->load->view('index');
+		}
+	}
+
+	function add_ebook()
+	{
+		if(isset($_SESSION['login_Status']))
+		{
+			$status = $_SESSION['login_Status'];
+			if($status == "logged")
+			{
+				$this->load->model('model');
+				$data['results'] = $this->model->getEbooks();
+				$this->load->view('subpage/add_ebook', $data);
+			}
+			else
+			{
+				$this->load->view('index');
+			}
+		}
+		else
+		{
+			$this->load->view('index');
+		}
+	}
+
+	function update_ebook()
+	{
+		if(isset($_SESSION['login_Status']))
+		{
+			$status = $_SESSION['login_Status'];
+			if($status == "logged")
+			{
+				$this->load->model('model');
+				$data['results'] = $this->model->getEbooks();
+				$this->load->view('subpage/update_ebook', $data);
+			}
+			else
+			{
+				$this->load->view('index');
+			}
+		}
+		else
+		{
+			$this->load->view('index');
+		}
+	}
+
+	function delete_ebook()
+	{
+		if(isset($_SESSION['login_Status']))
+		{
+			$status = $_SESSION['login_Status'];
+			if($status == "logged")
+			{
+				$this->load->model('model');
+				$data['results'] = $this->model->getEbooks();
+				$this->load->view('subpage/delete_ebook', $data);
+			}
+			else
+			{
+				$this->load->view('index');
+			}
+		}
+		else
+		{
+			$this->load->view('index');
+		}
+	}
+
+	function archive_ebook()
+	{
+		if(isset($_SESSION['login_Status']))
+		{
+			$status = $_SESSION['login_Status'];
+			if($status == "logged")
+			{
+				$this->load->model('model');
+				$data['results'] = $this->model->getArchivedEbooks();
+				$this->load->view('subpage/archive_ebook', $data);
+			}
+			else
+			{
+				$this->load->view('index');
+			}
+		}
+		else
+		{
+			$this->load->view('index');
+		}
+	}
 }
